@@ -11,8 +11,8 @@ collection = db["Processed_News"]
 
 @app.route("/")
 def front():
-    return render_template("front.html")
-@app.route("/index.html", methods=["GET", "POST"])
+    return render_template("index.html")
+@app.route("/ministries.html", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
         selected_ministry = request.form.get("ministry")
@@ -22,7 +22,7 @@ def index():
         return redirect(url_for("news_titles", ministry=selected_ministry, sentiment=selected_sentiment))
 
     # Handle the initial load of the page here
-    return render_template("index.html", ministries=get_ministries())
+    return render_template("ministries.html", ministries=get_ministries())
 
 
 @app.route("/news_titles")
